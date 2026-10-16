@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif;
+  --color-brand: #3aa5d2;
+  --color-brand-deep: #2589b5;
+  --color-brand-faint: #d8eef8;
+  --color-ink: #0e0e10;
+  --color-ink-soft: #1e1e22;
+  --color-stone: #efeee9;
+  --color-surface-2: #f7f7f5;
+  --color-line: #e5e5e7;
+  --color-muted: #6b6b72;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-surface-2 text-ink antialiased;
+  }
+  /* 16px inputs stop iOS Safari zooming in on focus */
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* A utility (not a component class) so the variants below can @apply it. */
+@utility btn {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 font-semibold transition active:scale-[.98] disabled:opacity-50 disabled:active:scale-100;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-white;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-muted;
+  }
+  .input {
+    @apply block w-full rounded-xl border border-line bg-white px-3.5 py-3 text-ink outline-none placeholder:text-[#9a9aa1] focus:border-brand focus:ring-3 focus:ring-brand/20 disabled:bg-surface-2;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white hover:bg-ink-soft;
+  }
+  .btn-brand {
+    @apply btn bg-brand text-white hover:bg-brand-deep;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white text-ink hover:bg-surface-2;
+  }
+  .btn-danger {
+    @apply btn border border-red-200 bg-white text-red-600 hover:bg-red-50;
+  }
+  .chip {
+    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium whitespace-nowrap;
+  }
+}
